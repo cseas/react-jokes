@@ -3,17 +3,17 @@ FROM node:14-alpine AS builder
 LABEL maintainer="Abhijeet Singh" \
       website="https://github.com/cseas"
 
-RUN mkdir -p /home/node/app
+RUN mkdir -p /home/node/app && chown -R node:node /home/node/app
 WORKDIR /home/node/app
 
-COPY package.json /home/node/app/package.json
-RUN sed -i '/\"homepage\"/d; /^$/d' package.json
-RUN npm i
+COPY package*.json /home/node/app/
+USER node
+RUN sed -i '/\"homepage\"/d; /^$/d' package.json \
+    && npm install
 
-COPY . /home/node/app
+COPY --chown=node:node . /home/node/app
 # RUN npm run build
 EXPOSE 3000
-USER node
 CMD ["npm", "start"]
 
 # Stage 2: Production Environment
