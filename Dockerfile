@@ -3,19 +3,18 @@ FROM node:14-alpine AS builder
 LABEL maintainer="Abhijeet Singh" \
       website="https://github.com/cseas"
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-# ENV PATH /usr/src/app/node_modules/.bin:$PATH
+RUN mkdir -p /home/node/app
+WORKDIR /home/node/app
 
-COPY package.json /usr/src/app/package.json
+COPY package.json /home/node/app/package.json
 RUN sed -i '/\"homepage\"/d; /^$/d' package.json
 RUN npm i
 
-COPY . /usr/src/app
+COPY . /home/node/app
 # RUN npm run build
 EXPOSE 3000
-CMD ["npm", "start"]
 USER node
+CMD ["npm", "start"]
 
 # Stage 2: Production Environment
 # FROM nginx:alpine
