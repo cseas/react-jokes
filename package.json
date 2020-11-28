@@ -2,6 +2,7 @@
   "name": "react-jokes",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://absingh.com/react-jokes",
   "dependencies": {
     "gh-pages": "^2.1.1",
     "react": "^16.12.0",
@@ -28,6 +29,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "homepage": "https://absingh.com/react-jokes"
+  }
 }
