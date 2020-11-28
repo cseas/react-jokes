@@ -7,8 +7,8 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 # ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
-RUN sed -i '/\"homepage\"/d; /^$/d' package.json
 COPY package.json /usr/src/app/package.json
+RUN sed -i '/\"homepage\"/d; /^$/d' package.json
 RUN npm i
 
 COPY . /usr/src/app
