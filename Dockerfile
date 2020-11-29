@@ -9,7 +9,7 @@ RUN mkdir -p /home/node/app &&\
 WORKDIR /home/node/app
 
 COPY package*.json /home/node/app/
-USER node
+USER 1000
 RUN sed -i '/\"homepage\"/d; /^$/d' package.json &&\
  npm install
 
