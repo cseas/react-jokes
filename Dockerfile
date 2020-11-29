@@ -3,7 +3,9 @@ FROM node:14-alpine AS builder
 LABEL maintainer="Abhijeet Singh" \
       website="https://github.com/cseas"
 
-RUN mkdir -p /home/node/app && chown -R node:node /home/node/app
+RUN mkdir -p /home/node/app \
+    && chmod -R 775 /home/node/app
+    && chown -R node:node /home/node/app
 WORKDIR /home/node/app
 
 COPY package*.json /home/node/app/
