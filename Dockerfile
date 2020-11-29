@@ -10,8 +10,8 @@ WORKDIR /home/node/app
 
 COPY package*.json /home/node/app/
 USER node
-RUN sed -i '/\"homepage\"/d; /^$/d' package.json \
-    && npm install
+RUN sed -i '/\"homepage\"/d; /^$/d' package.json &&\
+ npm install
 
 COPY --chown=node:node . /home/node/app
 # RUN npm run build
