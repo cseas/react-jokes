@@ -14,6 +14,7 @@ RUN chgrp -R 0 /home/node/app &&\
 
 COPY package*.json /home/node/app/
 USER 1000
+RUN whoami
 RUN sed -i '/\"homepage\"/d; /^$/d' package.json &&\
  npm install
 
